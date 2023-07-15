@@ -5,14 +5,12 @@ import collections.myStack.MyStack;
 public class TestMyHashMap {
     public static void main(String[] args) {
         System.out.println("Перевірка MyHashMap:");
-        MyHashMap<String, Integer> hashMap = new MyHashMap();
+        MyHashMap<Integer, Integer> hashMap = new MyHashMap();
 
 //        System.out.println("Додаю елементи.");
-        hashMap.put("Tree", 100);
-        hashMap.put("Dog", 80);
-        hashMap.put("Cat", 70);
-        hashMap.put("Snow", 30);
-        hashMap.put("Rain", 50);
+        for (int i = 0; i < 1000010; i++) {
+            hashMap.put(i, i);
+        }
 
         System.out.println("=======================");
 
@@ -24,23 +22,29 @@ public class TestMyHashMap {
 
         System.out.println("Перевіряю метод get(K key).");
 
-        System.out.println("hashMap.get(\"Rain\") = " + hashMap.get("Rain"));
+        for (int i  = 0; i < 10; i++) {
+            System.out.println("hashMap.get(" + i + ") = " + hashMap.get(i));
+        }
+        System.out.println("...");
+        for (int i  = 1000000; i < 1000010; i++) {
+            System.out.println("hashMap.get(" + i + ") = " + hashMap.get(i));
+        }
 
         System.out.println("=======================");
 
         System.out.println("Перевіряю невалідний ключ для методу get(K key).");
 
-        System.out.println("hashMap.get(\"Fish\") = " + hashMap.get("Fish"));
+        System.out.println("hashMap.get(-5) = " + hashMap.get(-5));
 
         System.out.println("=======================");
 
         System.out.println("Перевіряю метод remove(K key).");
 
-        hashMap.remove("Snow");
+        hashMap.remove(2);
         System.out.println("hashMap.size() = " + hashMap.size());
-        System.out.println("hashMap.get(\"Cat\") = " + hashMap.get("Cat"));
-        System.out.println("hashMap.get(\"Snow\") = " + hashMap.get("Snow"));
-        System.out.println("hashMap.get(\"Rain\") = " + hashMap.get("Rain"));
+        for (int i  = 0; i < 6; i++) {
+            System.out.println("hashMap.get(" + i + ") = " + hashMap.get(i));
+        }
 
         System.out.println("=======================");
 

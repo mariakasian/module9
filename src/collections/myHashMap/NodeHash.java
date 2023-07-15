@@ -26,4 +26,8 @@ public class NodeHash<K, V> {
     public NodeHash<K, V> getNext() {
         return next;
     }
+
+    public void setNext(NodeHash<K, V> next) {
+        this.next = next;
+    }
 }

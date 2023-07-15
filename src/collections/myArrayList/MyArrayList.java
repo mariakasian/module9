@@ -24,18 +24,19 @@ public class MyArrayList<T> {
     public int size() {
         return amountElements;
     }
+
     public void remove(int index) throws IllegalIndexOutOfBoundsException {
         try {
             for (int i = index; i <= amountElements; i++) {
                 values[i] = values[i + 1];
             }
+            amountElements--;
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new IllegalIndexOutOfBoundsException("Невалідний індекс: " + index);
         }
     }
     public void clear() {
-        for (int i = 0; i <= amountElements; i++) {
-            values[i] = null;
-        }
+        values = new Object[8];
+        amountElements = 0;
     }
 }

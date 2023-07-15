@@ -8,11 +8,9 @@ public class TestMyStack {
         MyStack<Integer> stack = new MyStack<>();
 
 //        System.out.println("Додаю елементи.");
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
-        stack.push(4);
-        stack.push(5);
+        for (int i = 0; i < 1000010; i++) {
+            stack.push(i);
+        }
 
         System.out.println("=======================");
 

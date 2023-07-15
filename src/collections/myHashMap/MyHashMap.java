@@ -25,8 +25,11 @@ public class MyHashMap<K, V> {
                     return;
                 }
                 if (currentNode.getNext() == null) {
-                    currentNode.setValue((V) newNode);;
+                    currentNode.setNext(newNode);
                     size++;
+                    if (size > buckets.length * 0.75) {
+                        resizeBuckets();
+                    }
                     return;
                 }
                 currentNode = currentNode.getNext();
@@ -34,9 +37,35 @@ public class MyHashMap<K, V> {
         }
     }
 
+    private void resizeBuckets() {
+        NodeHash<K, V>[] oldBuckets = buckets;
+        int newCapacity = buckets.length * 2;
+        buckets = new NodeHash[newCapacity];
+        size = 0;
+
+        for (NodeHash<K, V> node : oldBuckets) {
+            while (node != null) {
+                put(node.getKey(), node.getValue());
+                node = node.getNext();
+            }
+        }
+    }
+
     public int size() {
         return size;
     }
+
+    /*public V get(K key) {
+        index = Math.abs(key.hashCode() % buckets.length);
+        NodeHash<K, V> currentNode = buckets[index];
+        while (currentNode != null) {
+            if (currentNode.getKey().equals(key)) {
+                return currentNode.getValue();
+            }
+            currentNode = currentNode.getNext();
+        }
+        return null;
+    }*/
 
     public V get(K key) {
         index = Math.abs(key.hashCode() % buckets.length);

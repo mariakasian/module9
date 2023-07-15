@@ -28,9 +28,7 @@ public class MyLinkedList<T> {
     }
 
     public T get(int index) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("Невалідний індекс: " + index);
-        }
+        validateIndex(index);
 
         NodeLL<T> currentNode = firstNode;
         for (int i = 0; i < index; i++) {
@@ -40,9 +38,7 @@ public class MyLinkedList<T> {
     }
 
     public void remove(int index) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("Невалідний індекс: " + index);
-        }
+        validateIndex(index);
 
         NodeLL<T> nodeToRemove;
 
@@ -74,6 +70,12 @@ public class MyLinkedList<T> {
         firstNode = null;
         lastNode = null;
         size = 0;
+    }
+
+    private void validateIndex(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Невалідний індекс: " + index);
+        }
     }
 }
 

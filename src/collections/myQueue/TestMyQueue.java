@@ -6,11 +6,9 @@ public class TestMyQueue {
         MyQueue<Integer> queue = new MyQueue<>();
 
 //        System.out.println("Додаю елементи.");
-        queue.add(1);
-        queue.add(2);
-        queue.add(3);
-        queue.add(4);
-        queue.add(5);
+        for (int i = 0; i < 1000010; i++) {
+            queue.add(i);
+        }
 
         System.out.println("=======================");
 
@@ -30,12 +28,8 @@ public class TestMyQueue {
         System.out.println(queue.poll());
         System.out.println(queue.poll());
         System.out.println(queue.poll());
-
-        System.out.println("=======================");
-
-        System.out.println("Перевіряю метод size().");
-
         System.out.println("queue.size() = " + queue.size());
+        System.out.println("queue.peek() = " + queue.peek());
 
         System.out.println("=======================");
 
